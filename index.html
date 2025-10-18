@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <!-- Meta Tags -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Castro & Silva Advocacia</title>
+
+    <!-- Scripts and Stylesheets -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Add a focused Roboto family link (weights 300/400/500/700) to ensure Roboto is loaded reliably -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Styles -->
+    <style>
+      :root {
+        --bg-color: #e4e2dc;
+        --text-color: #111;
+        --accent-color: #00733e;
+        --white-hsl: 0, 0%, 100%;
+        --black-hsl: 0, 0%, 0%;
+        --safeLightAccent-hsl: 143.04, 66.14%, 37.06%;
+        --safeDarkAccent-hsl: 143.04, 66.14%, 37.06%;
+        --safeInverseAccent-hsl: 0, 0%, 100%;
+        --safeInverseLightAccent-hsl: 0, 0%, 100%;
+        --safeInverseDarkAccent-hsl: 0, 0%, 100%;
+        --accent-hsl: 143.04, 66.14%, 37.06%;
+        --lightAccent-hsl: 45, 11.76%, 86.67%;
+        --darkAccent-hsl: 111.43, 11.11%, 12.35%;
+        --siteBackgroundColor: hsla(var(--lightAccent-hsl), 1);
+      }
+      /* Use Roboto as the primary font (Google Fonts already imported above) */
+      html,
+      body {
+        background-color: var(--siteBackgroundColor);
+        color: var(--text-color);
+        /* force Roboto as primary font; !important to overcome later overrides */
+        font-family: "Roboto", system-ui, -apple-system, "Segoe UI",
+          "Helvetica Neue", Arial, sans-serif !important;
+      }
+
+      /* Ensure Tailwind's `font-sans` utility uses Roboto as well (this rule is after the CDN Tailwind include)
+         and make form controls inherit the same font for consistency. */
+      .font-sans {
+        font-family: "Roboto", ui-sans-serif, system-ui, -apple-system,
+          "Segoe UI", "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+      }
+
+      /* Make inputs, buttons and other controls inherit the page font */
+      input,
+      textarea,
+      select,
+      button {
+        font-family: inherit;
+      }
+    </style>
+
+    <!-- Head -->
+  </head>
+  <body class="font-sans antialiased">
+    <!-- Navbar -->
+    <header class="static top-0 w-full bg-[var(--bg-color)] z-50 shadow-sm">
+      <nav
+        class="max-w-full h-24 mx-auto flex justify-between items-center px-6 py-4"
+      >
+        <h1 class="text-2xl font-semibold text-[var(--accent-color)]">
+          Castro & Silva
+        </h1>
+        <ul class="hidden md:flex space-x-8 text-[var(--text-color)]">
+          <li>
+            <a href="#servicos" class="hover:text-[var(--accent-color)]"
+              >Serviços</a
+            >
+          </li>
+          <li>
+            <a href="#sobre" class="hover:text-[var(--accent-color)]"
+              >Quem somos</a
+            >
+          </li>
+          <li>
+            <a href="#contato" class="hover:text-[var(--accent-color)]"
+              >Contato</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Hero -->
+    <section
+      class="min-h-screen relative flex flex-col justify-center items-center text-center bg-cover bg-center"
+      style="background-image: url('src/images/background-5.webp')"
+    >
+      <div
+        class="absolute inset-0 bg-black/50 flex flex-col justify-center items-center px-6 py-20"
+      >
+        <h1
+          class="text-9xl md:text-8xl text-white mb-4"
+          style="color: hsl(var(--lightAccent-hsl))"
+        >
+          Excelência em Serviços Jurídicos
+        </h1>
+      </div>
+    </section>
+
+    <!-- Empresa (sobre a empresa) -->
+    <section id="empresa" class="bg-white w-full">
+      <div class="h-screen grid grid-cols-1 md:grid-cols-2">
+        <!-- Imagem da empresa à esquerda, ocupando toda a altura -->
+        <div class="h-screen w-full">
+          <img src="src/images/background-3.webp" alt="Empresa" class="w-full h-full object-cover" />
+        </div>
+
+        <!-- Texto da empresa à direita -->
+        <div class="h-screen flex items-center">
+          <div class="max-w-3xl p-8 md:p-20">
+            <h2 class="text-3xl md:text-4xl font-semibold text-gray-900 mb-4">Sobre a Empresa</h2>
+            <p class="text-gray-700 leading-relaxed mb-4">
+              A Castro & Silva é uma firma comprometida com excelência jurídica,
+              ética profissional e atendimento personalizado aos seus clientes.
+            </p>
+            <p class="text-gray-700 leading-relaxed mb-4">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius odit
+              quasi distinctio optio fugiat nam fuga porro laudantium quia
+              ducimus, rerum illo quidem excepturi suscipit modi iure!
+              Consequatur, perspiciatis eos!
+            </p>
+            <p class="text-gray-600">
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Debitis,
+              incidunt ad molestias perferendis, cupiditate excepturi expedita
+              corporis voluptas vitae blanditiis amet? Dolorum sit quo similique
+              aliquam reiciendis quasi nesciunt velit?
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sobre" class="w-full">
+      <div class="h-screen grid grid-cols-1 md:grid-cols-2 bg-white">
+        <div class="h-screen w-full">
+          <img
+            src="src/images/igor-castro.jpg"
+            alt="Castro"
+            class="w-full h-full object-cover"
+          />
+        </div>
+
+        <div class="h-screen flex items-center">
+          <div class="max-w-3xl p-8 md:p-20">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">Castro</h2>
+            <p class="text-lg leading-relaxed text-gray-800">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
+              posuere, tortor quis congue tristique, sapien lectus fermentum
+              nunc, at posuere elit sapien eget neque. Vestibulum ante ipsum
+              primis in faucibus orci luctus et ultrices posuere cubilia curae;
+              Curabitur sit amet eros vitae urna pulvinar gravida.
+            </p>
+            <p class="mt-6 text-gray-600">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
+              facilisi. Sed vitae sapien non lorem facilisis tincidunt. Duis
+              vulputate justo non arcu pulvinar, a posuere urna cursus.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="h-screen grid grid-cols-1 md:grid-cols-2">
+        <div class="h-screen flex items-center">
+          <div class="max-w-3xl p-8 md:p-20 text-left">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">Silva</h2>
+            <p class="text-lg leading-relaxed text-gray-800">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
+              tincidunt, nunc sed faucibus fermentum, lectus urna gravida
+              sapien, et cursus nunc lorem non mauris. Pellentesque habitant
+              morbi tristique senectus et netus et malesuada fames ac turpis
+              egestas.
+            </p>
+            <p class="mt-6 text-gray-600">
+              Fusce vitae neque non arcu tristique consequat. Donec efficitur
+              ipsum at lacus pulvinar, in efficitur arcu tincidunt. Vivamus
+              bibendum, eros eu suscipit aliquam, orci nisl ultrices nibh, ac
+              sodales urna urna a urna.
+            </p>
+          </div>
+        </div>
+
+        <div class="h-screen w-full">
+          <img
+            src="src/images/silva.jpg"
+            alt="Silva"
+            class="w-full h-full object-cover"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Serviços -->
+    <section id="servicos" class="py-24 min-h-[100vh] bg-white">
+      <div class="max-w-6xl mx-auto px-6">
+        <h3 class="text-3xl font-semibold text-center mb-12 text-gray-800">
+          Nossos Serviços
+        </h3>
+        <div class="grid md:grid-cols-3 gap-8 text-center">
+          <div
+            class="p-6 border rounded-lg hover:shadow-lg transition flex flex-col"
+          >
+            <img
+              src="src/images/background-2.webp"
+              alt="Direito Cível"
+              class="w-full h-72 object-cover rounded-md mb-4"
+            />
+            <h4 class="text-xl font-semibold mb-3 text-[var(--accent-color)]">
+              Direito Cível
+            </h4>
+            <p class="text-gray-600 mt-auto">
+              Consultoria e representação em casos contratuais, indenizações e
+              disputas civis.
+            </p>
+          </div>
+          <div
+            class="p-6 border rounded-lg hover:shadow-lg transition flex flex-col"
+          >
+            <img
+              src="src/images/background-7.jpg"
+              alt="Direito Empresarial"
+              class="w-full h-72 object-cover rounded-md mb-4"
+            />
+            <h4 class="text-xl font-semibold mb-3 text-[var(--accent-color)]">
+              Direito Empresarial
+            </h4>
+            <p class="text-gray-600 mt-auto">
+              Atuação completa em direito societário, comercial e assessoria
+              jurídica empresarial.
+            </p>
+          </div>
+          <div
+            class="p-6 border rounded-lg hover:shadow-lg transition flex flex-col"
+          >
+            <img
+              src="src/images/background-4.webp"
+              alt="Direito Trabalhista"
+              class="w-full h-72 object-cover rounded-md mb-4"
+            />
+            <h4 class="text-xl font-semibold mb-3 text-[var(--accent-color)]">
+              Direito Trabalhista
+            </h4>
+            <p class="text-gray-600 mt-auto">
+              Defesa e orientação jurídica em relações trabalhistas, tanto para
+              empresas quanto colaboradores.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contato -->
+    <section
+      id="contato"
+      class="max-w-6xl mx-auto py-24 px-6 grid md:grid-cols-2 gap-10"
+    >
+      <div>
+        <h3 class="text-3xl font-semibold mb-4">Fale conosco</h3>
+        <p class="text-gray-700 mb-8">
+          Quer trabalhar em conjunto? Preencha o formulário e entraremos em
+          contato em breve. Será um prazer falar com você.
+        </p>
+      </div>
+      <form class="space-y-4">
+        <div class="grid md:grid-cols-2 gap-4">
+          <input
+            type="text"
+            placeholder="Nome"
+            class="w-full border border-gray-400 rounded-full p-3 focus:outline-none focus:ring-2 focus:ring-[var(--accent-color)]"
+          />
+          <input
+            type="text"
+            placeholder="Sobrenome"
+            class="w-full border border-gray-400 rounded-full p-3 focus:outline-none focus:ring-2 focus:ring-[var(--accent-color)]"
+          />
+        </div>
+        <input
+          type="email"
+          placeholder="E-mail"
+          class="w-full border border-gray-400 rounded-full p-3 focus:outline-none focus:ring-2 focus:ring-[var(--accent-color)]"
+        />
+        <textarea
+          placeholder="Mensagem"
+          rows="4"
+          class="w-full border border-gray-400 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-[var(--accent-color)]"
+        ></textarea>
+        <button
+          type="submit"
+          class="bg-[var(--text-color)] text-white px-6 py-3 rounded-full hover:bg-gray-800 transition"
+        >
+          Enviar
+        </button>
+      </form>
+    </section>
+
+    <!-- Footer -->
+    <footer
+      class="bg-[var(--text-color)] text-gray-300 text-center py-6 text-sm"
+    >
+      <p>
+        &copy; 2025 Castro & Silva Advocacia — Todos os direitos reservados.
+      </p>
+    </footer>
+    <!-- Forçar Roboto com alta especificidade para cobrir possíveis sobrescritas por CSS externos -->
+    <style id="force-roboto" type="text/css">
+      /* Apply to most common elements and utilities, avoid SVG text */
+      html,
+      body,
+      .font-sans,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p,
+      a,
+      span,
+      div,
+      input,
+      textarea,
+      select,
+      button,
+      label {
+        font-family: "Roboto", system-ui, -apple-system, "Segoe UI",
+          "Helvetica Neue", Arial, sans-serif !important;
+      }
+    </style>
+
+    <script>
+      // Simple check to help debugging in the browser console whether Roboto is available
+      if (document.fonts && document.fonts.check) {
+        console.log(
+          "Roboto 400 available:",
+          document.fonts.check("1rem Roboto")
+        );
+        console.log(
+          "Roboto 700 available:",
+          document.fonts.check("700 1rem Roboto")
+        );
+      } else {
+        console.log("Font API not available; verify Roboto via Network tab.");
+      }
+    </script>
+  </body>
+</html>
