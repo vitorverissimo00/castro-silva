@@ -1,8 +1,38 @@
 // Castro & Silva Advocacia - JavaScript Functions
 
+// Initialize Navbar Scroll Effect
+function initNavbarScroll() {
+  const navbar = document.getElementById("navbar");
+  let lastScrollY = window.scrollY;
+
+  function updateNavbar() {
+    const currentScrollY = window.scrollY;
+
+    if (currentScrollY > 100) {
+      navbar.classList.add("scrolled");
+    } else {
+      navbar.classList.remove("scrolled");
+    }
+
+    lastScrollY = currentScrollY;
+  }
+
+  window.addEventListener("scroll", updateNavbar);
+  updateNavbar(); // Call once to set initial state
+}
+
 // Initialize EmailJS
 function initEmailJS() {
   emailjs.init("8Gj59XzNcTjvQvYL8");
+}
+
+// Initialize Hero Animation
+function initHeroAnimation() {
+  const heroTitle = document.getElementById("hero-title");
+
+  if (heroTitle) {
+    heroTitle.classList.add("hero-float");
+  }
 }
 
 // Initialize Mobile Menu
@@ -142,6 +172,8 @@ function setCurrentYear() {
 
 // Initialize all functions when DOM is loaded
 document.addEventListener("DOMContentLoaded", function () {
+  initHeroAnimation();
+  initNavbarScroll();
   initEmailJS();
   initMobileMenu();
   initScrollAnimations();

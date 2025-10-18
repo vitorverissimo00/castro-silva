@@ -27,6 +27,67 @@ body {
   font-family: "Roboto", system-ui, -apple-system, "Segoe UI", "Helvetica Neue",
     Arial, sans-serif !important;
 }
+
+/* Hero Title Float Animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes heroFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(50px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px) scale(1);
+  }
+}
+
+.hero-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.hero-animate {
+  animation: heroFadeIn 1.2s ease-out 0.8s forwards;
+  opacity: 0;
+}
+
+/* Navbar States */
+#navbar.scrolled {
+  background-color: var(--bg-color);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+}
+
+#navbar.scrolled h1 {
+  color: var(--accent-color);
+}
+
+#navbar.scrolled ul {
+  color: var(--text-color);
+}
+
+#navbar.scrolled ul a {
+  color: var(--text-color);
+}
+
+#navbar.scrolled #mobile-menu-btn span {
+  background-color: var(--text-color);
+}
+
+/* Base Styles */
+html,
+body {
+  background-color: var(--siteBackgroundColor);
+  color: var(--text-color);
+  font-family: "Roboto", system-ui, -apple-system, "Segoe UI", "Helvetica Neue",
+    Arial, sans-serif !important;
+}
 .font-sans {
   font-family: "Roboto", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
     "Helvetica Neue", Arial, "Noto Sans", sans-serif;

@@ -22,14 +22,15 @@
   <body class="font-sans antialiased">
     <!-- Navbar -->
     <header
-      class="relative top-0 w-full bg-[var(--bg-color)] z-50 shadow-sm opacity-0 translate-y-[-20px] transition-all duration-700 ease-out"
+      id="navbar"
+      class="fixed top-0 w-full bg-transparent z-50 transition-all duration-500 ease-out opacity-0 translate-y-[-20px]"
       data-scroll-animate
     >
       <nav
         class="max-w-full h-16 md:h-24 mx-auto flex justify-between items-center px-4 md:px-6 py-4"
       >
         <h1
-          class="text-lg md:text-2xl font-semibold text-[var(--accent-color)] opacity-0 translate-x-[-30px] transition-all duration-700 ease-out delay-200"
+          class="text-lg md:text-2xl font-semibold text-white opacity-0 translate-x-[-30px] transition-all duration-700 ease-out delay-200"
           data-scroll-animate
         >
           Castro & Silva
@@ -37,7 +38,7 @@
 
         <!-- Menu Desktop -->
         <ul
-          class="hidden md:flex space-x-8 text-[var(--text-color)] opacity-0 translate-x-[30px] transition-all duration-700 ease-out delay-400"
+          class="hidden md:flex space-x-8 text-white opacity-0 translate-x-[30px] transition-all duration-700 ease-out delay-400"
           data-scroll-animate
         >
           <li>
@@ -70,13 +71,13 @@
           data-scroll-animate
         >
           <span
-            class="w-6 h-0.5 bg-[var(--text-color)] transition-all duration-300"
+            class="w-6 h-0.5 bg-white transition-all duration-300"
           ></span>
           <span
-            class="w-6 h-0.5 bg-[var(--text-color)] transition-all duration-300"
+            class="w-6 h-0.5 bg-white transition-all duration-300"
           ></span>
           <span
-            class="w-6 h-0.5 bg-[var(--text-color)] transition-all duration-300"
+            class="w-6 h-0.5 bg-white transition-all duration-300"
           ></span>
         </button>
       </nav>
