@@ -12,255 +12,100 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet"
-    />
-    <!-- Add a focused Roboto family link (weights 300/400/500/700) to ensure Roboto is loaded reliably -->
-    <link
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
       rel="stylesheet"
     />
 
-    <!-- Styles -->
-    <style>
-      :root {
-        --bg-color: #e4e2dc;
-        --text-color: #111;
-        --accent-color: #00733e;
-        --white-hsl: 0, 0%, 100%;
-        --black-hsl: 0, 0%, 0%;
-        --safeLightAccent-hsl: 143.04, 66.14%, 37.06%;
-        --safeDarkAccent-hsl: 143.04, 66.14%, 37.06%;
-        --safeInverseAccent-hsl: 0, 0%, 100%;
-        --safeInverseLightAccent-hsl: 0, 0%, 100%;
-        --safeInverseDarkAccent-hsl: 0, 0%, 100%;
-        --accent-hsl: 143.04, 66.14%, 37.06%;
-        --lightAccent-hsl: 45, 11.76%, 86.67%;
-        --darkAccent-hsl: 111.43, 11.11%, 12.35%;
-        --siteBackgroundColor: hsla(var(--lightAccent-hsl), 1);
-      }
-      /* Use Roboto as the primary font (Google Fonts already imported above) */
-      html,
-      body {
-        background-color: var(--siteBackgroundColor);
-        color: var(--text-color);
-        /* force Roboto as primary font; !important to overcome later overrides */
-        font-family: "Roboto", system-ui, -apple-system, "Segoe UI",
-          "Helvetica Neue", Arial, sans-serif !important;
-      }
-
-      /* Ensure Tailwind's `font-sans` utility uses Roboto as well (this rule is after the CDN Tailwind include)
-         and make form controls inherit the same font for consistency. */
-      .font-sans {
-        font-family: "Roboto", ui-sans-serif, system-ui, -apple-system,
-          "Segoe UI", "Helvetica Neue", Arial, "Noto Sans", sans-serif;
-      }
-
-      /* Make inputs, buttons and other controls inherit the page font */
-      input,
-      textarea,
-      select,
-      button {
-        font-family: inherit;
-      }
-
-      /* Custom Scrollbar Styles */
-      /* Webkit browsers (Chrome, Safari, Edge) */
-      ::-webkit-scrollbar {
-        width: 12px;
-      }
-
-      ::-webkit-scrollbar-track {
-        background: var(--siteBackgroundColor);
-        border-radius: 10px;
-      }
-
-      ::-webkit-scrollbar-thumb {
-        background: linear-gradient(180deg, var(--accent-color), #005a31);
-        border-radius: 10px;
-        border: 2px solid var(--siteBackgroundColor);
-        transition: all 0.3s ease;
-      }
-
-      ::-webkit-scrollbar-thumb:hover {
-        background: linear-gradient(180deg, #005a31, var(--accent-color));
-        transform: scale(1.1);
-        box-shadow: 0 2px 8px rgba(0, 115, 62, 0.3);
-      }
-
-      ::-webkit-scrollbar-corner {
-        background: var(--siteBackgroundColor);
-      }
-
-      /* Firefox */
-      html {
-        scrollbar-width: thin;
-        scrollbar-color: var(--accent-color) var(--siteBackgroundColor);
-      }
-
-      /* Smooth scrolling for all browsers */
-      html {
-        scroll-behavior: smooth;
-      }
-
-      /* Custom scrollbar for specific containers */
-      .custom-scroll {
-        scrollbar-width: thin;
-        scrollbar-color: var(--accent-color) transparent;
-      }
-
-      .custom-scroll::-webkit-scrollbar {
-        width: 8px;
-        height: 8px;
-      }
-
-      .custom-scroll::-webkit-scrollbar-track {
-        background: transparent;
-      }
-
-      .custom-scroll::-webkit-scrollbar-thumb {
-        background: var(--accent-color);
-        border-radius: 4px;
-        opacity: 0.7;
-      }
-
-      .custom-scroll::-webkit-scrollbar-thumb:hover {
-        opacity: 1;
-        background: #005a31;
-      }
-
-      /* Scrollbar animation on page load */
-      @keyframes scrollbarFadeIn {
-        from {
-          opacity: 0;
-        }
-        to {
-          opacity: 1;
-        }
-      }
-
-      ::-webkit-scrollbar-thumb {
-        animation: scrollbarFadeIn 0.5s ease-in-out;
-      }
-
-      /* Scrollbar visibility on scroll */
-      body {
-        transition: all 0.3s ease;
-      }
-
-      body::-webkit-scrollbar-thumb {
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-
-      /* Enhanced scrollbar during scroll */
-      body.scrolling::-webkit-scrollbar-thumb {
-        background: linear-gradient(180deg, var(--accent-color), #004a29);
-        box-shadow: 0 2px 12px rgba(0, 115, 62, 0.4);
-        transform: scaleX(1.1);
-      }
-
-      /* Scroll progress indicator (optional) */
-      body::before {
-        content: '';
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: var(--scroll-progress, 0%);
-        height: 2px;
-        background: linear-gradient(90deg, var(--accent-color), #66bb6a);
-        z-index: 9999;
-        transition: width 0.1s ease-out;
-        opacity: 0;
-        pointer-events: none;
-      }
-
-      body.scrolling::before {
-        opacity: 1;
-      }
-
-      /* Elegant scrollbar for mobile */
-      @media (max-width: 768px) {
-        /* Hide scrollbar on mobile for cleaner look */
-        ::-webkit-scrollbar {
-          width: 6px;
-        }
-        
-        ::-webkit-scrollbar-thumb {
-          border: 1px solid var(--siteBackgroundColor);
-        }
-        
-        /* Better touch targets */
-        button,
-        a {
-          min-height: 44px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-        
-        /* Prevent zoom on input focus */
-        input,
-        textarea,
-        select {
-          font-size: 16px;
-        }
-      }
-    </style>
-
-    <!-- Head -->
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css" />
   </head>
   <body class="font-sans antialiased">
     <!-- Navbar -->
-    <header class="static top-0 w-full bg-[var(--bg-color)] z-50 shadow-sm">
+    <header
+      class="relative top-0 w-full bg-[var(--bg-color)] z-50 shadow-sm opacity-0 translate-y-[-20px] transition-all duration-700 ease-out"
+      data-scroll-animate
+    >
       <nav
         class="max-w-full h-16 md:h-24 mx-auto flex justify-between items-center px-4 md:px-6 py-4"
       >
-        <h1 class="text-lg md:text-2xl font-semibold text-[var(--accent-color)]">
+        <h1
+          class="text-lg md:text-2xl font-semibold text-[var(--accent-color)] opacity-0 translate-x-[-30px] transition-all duration-700 ease-out delay-200"
+          data-scroll-animate
+        >
           Castro & Silva
         </h1>
-        
+
         <!-- Menu Desktop -->
-        <ul class="hidden md:flex space-x-8 text-[var(--text-color)]">
+        <ul
+          class="hidden md:flex space-x-8 text-[var(--text-color)] opacity-0 translate-x-[30px] transition-all duration-700 ease-out delay-400"
+          data-scroll-animate
+        >
           <li>
-            <a href="#servicos" class="hover:text-[var(--accent-color)]"
+            <a
+              href="#servicos"
+              class="hover:text-[var(--accent-color)] transition-colors duration-300"
               >Serviços</a
             >
           </li>
           <li>
-            <a href="#sobre" class="hover:text-[var(--accent-color)]"
+            <a
+              href="#sobre"
+              class="hover:text-[var(--accent-color)] transition-colors duration-300"
               >Quem somos</a
             >
           </li>
           <li>
-            <a href="#contato" class="hover:text-[var(--accent-color)]"
+            <a
+              href="#contato"
+              class="hover:text-[var(--accent-color)] transition-colors duration-300"
               >Contato</a
             >
           </li>
         </ul>
 
         <!-- Menu Hamburger Mobile -->
-        <button id="mobile-menu-btn" class="md:hidden flex flex-col space-y-1 p-2">
-          <span class="w-6 h-0.5 bg-[var(--text-color)] transition-all duration-300"></span>
-          <span class="w-6 h-0.5 bg-[var(--text-color)] transition-all duration-300"></span>
-          <span class="w-6 h-0.5 bg-[var(--text-color)] transition-all duration-300"></span>
+        <button
+          id="mobile-menu-btn"
+          class="md:hidden flex flex-col space-y-1 p-2 opacity-0 translate-x-[30px] transition-all duration-700 ease-out delay-600"
+          data-scroll-animate
+        >
+          <span
+            class="w-6 h-0.5 bg-[var(--text-color)] transition-all duration-300"
+          ></span>
+          <span
+            class="w-6 h-0.5 bg-[var(--text-color)] transition-all duration-300"
+          ></span>
+          <span
+            class="w-6 h-0.5 bg-[var(--text-color)] transition-all duration-300"
+          ></span>
         </button>
       </nav>
-      
+
       <!-- Menu Mobile -->
-      <div id="mobile-menu" class="md:hidden hidden absolute top-16 left-0 w-full bg-[var(--bg-color)] border-t border-gray-200 shadow-lg z-40">
+      <div
+        id="mobile-menu"
+        class="md:hidden hidden absolute top-16 left-0 w-full bg-[var(--bg-color)] border-t border-gray-200 shadow-lg z-40 opacity-0 translate-y-[-10px] transition-all duration-300"
+        data-scroll-animate
+      >
         <ul class="flex flex-col space-y-0 text-[var(--text-color)]">
           <li>
-            <a href="#servicos" class="block px-6 py-4 hover:bg-gray-100 hover:text-[var(--accent-color)] transition-colors"
+            <a
+              href="#servicos"
+              class="block px-6 py-4 hover:bg-gray-100 hover:text-[var(--accent-color)] transition-all duration-300"
               >Serviços</a
             >
           </li>
           <li>
-            <a href="#sobre" class="block px-6 py-4 hover:bg-gray-100 hover:text-[var(--accent-color)] transition-colors"
+            <a
+              href="#sobre"
+              class="block px-6 py-4 hover:bg-gray-100 hover:text-[var(--accent-color)] transition-all duration-300"
               >Quem somos</a
             >
           </li>
           <li>
-            <a href="#contato" class="block px-6 py-4 hover:bg-gray-100 hover:text-[var(--accent-color)] transition-colors"
+            <a
+              href="#contato"
+              class="block px-6 py-4 hover:bg-gray-100 hover:text-[var(--accent-color)] transition-all duration-300"
               >Contato</a
             >
           </li>
@@ -277,8 +122,9 @@
         class="absolute inset-0 bg-black/50 flex flex-col justify-center items-center px-4 md:px-6 py-20"
       >
         <h1
-          class="text-4xl sm:text-5xl md:text-6xl lg:text-8xl xl:text-9xl text-white mb-4 leading-tight"
+          class="text-4xl sm:text-5xl md:text-6xl lg:text-8xl xl:text-9xl text-white mb-4 leading-tight opacity-0 translate-y-12 scale-95 transition-all duration-1200 ease-out delay-800"
           style="color: hsl(var(--lightAccent-hsl))"
+          data-scroll-animate
         >
           Excelência em Serviços Jurídicos
         </h1>
@@ -288,30 +134,48 @@
     <!-- Empresa (sobre a empresa) -->
     <section id="empresa" class="w-full px-4 md:px-6 lg:px-20">
       <div class="min-h-screen grid grid-cols-1 lg:grid-cols-2">
-        <div class="min-h-[50vh] lg:h-screen w-full flex justify-center items-center py-8 lg:py-0">
+        <div
+          class="min-h-[50vh] lg:h-screen w-full flex justify-center items-center py-8 lg:py-0 opacity-0 translate-x-[-50px] transition-all duration-1000 ease-out"
+          data-scroll-animate
+        >
           <img
             src="assets/images/company-logo.png"
             alt="Empresa"
-            class="max-w-full w-full h-auto object-contain px-4"
+            class="max-w-full w-full h-auto object-contain px-4 transition-transform duration-500 hover:scale-105"
           />
         </div>
 
-        <div class="min-h-[50vh] lg:h-screen flex items-center">
+        <div
+          class="min-h-[50vh] lg:h-screen flex items-center opacity-0 translate-x-[50px] transition-all duration-1000 ease-out"
+          data-scroll-animate
+        >
           <div class="max-w-3xl p-4 md:p-8 lg:p-20">
-            <h2 class="text-2xl md:text-3xl lg:text-4xl font-semibold text-gray-900 mb-4">
+            <h2
+              class="text-2xl md:text-3xl lg:text-4xl font-semibold text-[var(--green-color)] mb-4 opacity-0 translate-y-8 transition-all duration-700 ease-out delay-200"
+              data-scroll-animate
+            >
               Sobre a Empresa
             </h2>
-            <p class="text-sm md:text-base text-gray-700 leading-relaxed mb-4">
+            <p
+              class="text-sm md:text-base text-gray-700 leading-relaxed mb-4 opacity-0 translate-y-8 transition-all duration-700 ease-out delay-400"
+              data-scroll-animate
+            >
               A Castro & Silva é uma firma comprometida com excelência jurídica,
               ética profissional e atendimento personalizado aos seus clientes.
             </p>
-            <p class="text-sm md:text-base text-gray-700 leading-relaxed mb-4">
+            <p
+              class="text-sm md:text-base text-gray-700 leading-relaxed mb-4 opacity-0 translate-y-8 transition-all duration-700 ease-out delay-600"
+              data-scroll-animate
+            >
               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius
               odit quasi distinctio optio fugiat nam fuga porro laudantium quia
               ducimus, rerum illo quidem excepturi suscipit modi iure!
               Consequatur, perspiciatis eos!
             </p>
-            <p class="text-sm md:text-base text-gray-600">
+            <p
+              class="text-sm md:text-base text-gray-600 opacity-0 translate-y-8 transition-all duration-700 ease-out delay-800"
+              data-scroll-animate
+            >
               Lorem ipsum dolor sit amet consectetur, adipisicing elit. Debitis,
               incidunt ad molestias perferendis, cupiditate excepturi expedita
               corporis voluptas vitae blanditiis amet? Dolorum sit quo similique
@@ -324,17 +188,31 @@
 
     <section id="sobre" class="w-full">
       <div class="min-h-screen grid grid-cols-1 lg:grid-cols-2 bg-white">
-        <div class="min-h-[50vh] lg:h-screen flex items-center order-2 lg:order-1">
+        <div
+          class="min-h-[50vh] lg:h-screen flex items-center order-2 lg:order-1 opacity-0 translate-x-[-50px] transition-all duration-1000 ease-out"
+          data-scroll-animate
+        >
           <div class="max-w-3xl p-4 md:p-8 lg:p-20">
-            <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">Castro</h2>
-            <p class="text-sm md:text-base lg:text-lg leading-relaxed text-gray-800">
+            <h2
+              class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 opacity-0 translate-y-8 transition-all duration-700 ease-out delay-200"
+              data-scroll-animate
+            >
+              Igor Castro
+            </h2>
+            <p
+              class="text-sm md:text-base lg:text-lg leading-relaxed text-gray-800 castro-silva-text opacity-0 translate-y-8 transition-all duration-700 ease-out delay-400"
+              data-scroll-animate
+            >
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
               posuere, tortor quis congue tristique, sapien lectus fermentum
               nunc, at posuere elit sapien eget neque. Vestibulum ante ipsum
               primis in faucibus orci luctus et ultrices posuere cubilia curae;
               Curabitur sit amet eros vitae urna pulvinar gravida.
             </p>
-            <p class="mt-4 md:mt-6 text-sm md:text-base text-gray-600">
+            <p
+              class="mt-4 md:mt-6 text-sm md:text-base text-gray-600 castro-silva-text opacity-0 translate-y-8 transition-all duration-700 ease-out delay-600"
+              data-scroll-animate
+            >
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
               facilisi. Sed vitae sapien non lorem facilisis tincidunt. Duis
               vulputate justo non arcu pulvinar, a posuere urna cursus.
@@ -342,34 +220,54 @@
           </div>
         </div>
 
-        <div class="min-h-[50vh] lg:h-screen w-full order-1 lg:order-2">
+        <div
+          class="min-h-[50vh] lg:h-screen w-full order-1 lg:order-2 opacity-0 translate-x-[50px] transition-all duration-1000 ease-out"
+          data-scroll-animate
+        >
           <img
             src="assets/images/igor-castro.jpg"
             alt="Castro"
-            class="w-full h-full object-cover"
+            class="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
           />
         </div>
       </div>
 
       <div class="min-h-screen grid grid-cols-1 lg:grid-cols-2">
-        <div class="min-h-[50vh] lg:h-screen w-full">
+        <div
+          class="min-h-[50vh] lg:h-screen w-full opacity-0 translate-x-[-50px] transition-all duration-1000 ease-out"
+          data-scroll-animate
+        >
           <img
             src="assets/images/silva.jpg"
             alt="Silva"
-            class="w-full h-full object-cover"
+            class="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
           />
         </div>
-        <div class="min-h-[50vh] lg:h-screen flex items-center">
+        <div
+          class="min-h-[50vh] lg:h-screen flex items-center opacity-0 translate-x-[50px] transition-all duration-1000 ease-out"
+          data-scroll-animate
+        >
           <div class="max-w-3xl p-4 md:p-8 lg:p-20 text-left">
-            <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">Silva</h2>
-            <p class="text-sm md:text-base lg:text-lg leading-relaxed text-gray-800">
+            <h2
+              class="text-3xl md:text-4xl text-gray-800 lg:text-5xl font-bold mb-6 opacity-0 translate-y-8 transition-all duration-700 ease-out delay-200"
+              data-scroll-animate
+            >
+              Silva
+            </h2>
+            <p
+              class="text-sm md:text-base lg:text-lg leading-relaxed text-gray-800 castro-silva-text opacity-0 translate-y-8 transition-all duration-700 ease-out delay-400"
+              data-scroll-animate
+            >
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
               tincidunt, nunc sed faucibus fermentum, lectus urna gravida
               sapien, et cursus nunc lorem non mauris. Pellentesque habitant
               morbi tristique senectus et netus et malesuada fames ac turpis
               egestas.
             </p>
-            <p class="mt-4 md:mt-6 text-sm md:text-base text-gray-600">
+            <p
+              class="mt-4 md:mt-6 text-sm md:text-base text-gray-600 castro-silva-text opacity-0 translate-y-8 transition-all duration-700 ease-out delay-600"
+              data-scroll-animate
+            >
               Fusce vitae neque non arcu tristique consequat. Donec efficitur
               ipsum at lacus pulvinar, in efficitur arcu tincidunt. Vivamus
               bibendum, eros eu suscipit aliquam, orci nisl ultrices nibh, ac
@@ -383,19 +281,25 @@
     <!-- Serviços -->
     <section id="servicos" class="py-12 md:py-24 min-h-[100vh] bg-white">
       <div class="max-w-6xl mx-auto px-4 md:px-6">
-        <h3 class="text-2xl md:text-3xl font-semibold text-center mb-8 md:mb-12 text-gray-800">
+        <h3
+          class="text-2xl md:text-3xl text-[var(--green-color)] font-semibold text-center mb-8 md:mb-12 opacity-0 translate-y-8 transition-all duration-700 ease-out"
+          data-scroll-animate
+        >
           Nossos Serviços
         </h3>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 text-center">
           <div
-            class="p-4 md:p-6 border rounded-lg hover:shadow-lg transition flex flex-col"
+            class="p-4 md:p-6 border rounded-lg hover:shadow-lg transition-all duration-500 flex flex-col opacity-0 translate-y-12 transition-all duration-800 ease-out delay-200 hover:-translate-y-2"
+            data-scroll-animate
           >
             <img
               src="assets/images/background-9.jpg"
               alt="Direito Cível"
-              class="w-full h-48 md:h-72 object-cover rounded-md mb-4"
+              class="w-full h-48 md:h-72 object-cover rounded-md mb-4 transition-transform duration-500 hover:scale-105"
             />
-            <h4 class="text-lg md:text-xl font-semibold mb-3 text-[var(--accent-color)]">
+            <h4
+              class="text-lg md:text-xl font-semibold mb-3 text-[var(--green-color)]"
+            >
               Direito Cível
             </h4>
             <p class="text-sm md:text-base text-gray-600 mt-auto">
@@ -404,14 +308,17 @@
             </p>
           </div>
           <div
-            class="p-4 md:p-6 border rounded-lg hover:shadow-lg transition flex flex-col"
+            class="p-4 md:p-6 border rounded-lg hover:shadow-lg transition-all duration-500 flex flex-col opacity-0 translate-y-12 transition-all duration-800 ease-out delay-400 hover:-translate-y-2"
+            data-scroll-animate
           >
             <img
               src="assets/images/background-7.jpg"
               alt="Direito Empresarial"
-              class="w-full h-48 md:h-72 object-cover rounded-md mb-4"
+              class="w-full h-48 md:h-72 object-cover rounded-md mb-4 transition-transform duration-500 hover:scale-105"
             />
-            <h4 class="text-lg md:text-xl font-semibold mb-3 text-[var(--accent-color)]">
+            <h4
+              class="text-lg md:text-xl font-semibold mb-3 text-[var(--green-color)]"
+            >
               Direito Empresarial
             </h4>
             <p class="text-sm md:text-base text-gray-600 mt-auto">
@@ -420,14 +327,17 @@
             </p>
           </div>
           <div
-            class="p-4 md:p-6 border rounded-lg hover:shadow-lg transition flex flex-col"
+            class="p-4 md:p-6 border rounded-lg hover:shadow-lg transition-all duration-500 flex flex-col opacity-0 translate-y-12 transition-all duration-800 ease-out delay-600 hover:-translate-y-2"
+            data-scroll-animate
           >
             <img
               src="assets/images/background-8.jpg"
               alt="Direito Trabalhista"
-              class="w-full h-48 md:h-72 object-cover rounded-md mb-4"
+              class="w-full h-48 md:h-72 object-cover rounded-md mb-4 transition-transform duration-500 hover:scale-105"
             />
-            <h4 class="text-lg md:text-xl font-semibold mb-3 text-[var(--accent-color)]">
+            <h4
+              class="text-lg md:text-xl font-semibold mb-3 text-[var(--green-color)]"
+            >
               Direito Trabalhista
             </h4>
             <p class="text-sm md:text-base text-gray-600 mt-auto">
@@ -444,161 +354,83 @@
       id="contato"
       class="max-w-6xl mx-auto py-12 md:py-24 px-4 md:px-6 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10"
     >
-      <div>
-        <h3 class="text-2xl md:text-3xl font-semibold mb-4">Fale conosco</h3>
-        <p class="text-sm md:text-base text-gray-700 mb-6 md:mb-8">
+      <div
+        class="opacity-0 translate-x-[-50px] transition-all duration-1000 ease-out"
+        data-scroll-animate
+      >
+        <h3
+          class="text-2xl md:text-3xl font-semibold mb-4 opacity-0 translate-y-8 transition-all duration-700 ease-out delay-200 text-[var(--accent-color)]"
+          data-scroll-animate
+        >
+          Fale conosco
+        </h3>
+        <p
+          class="text-sm md:text-base text-gray-700 mb-6 md:mb-8 opacity-0 translate-y-8 transition-all duration-700 ease-out delay-400"
+          data-scroll-animate
+        >
           Quer trabalhar em conjunto? Preencha o formulário e entraremos em
           contato em breve. Será um prazer falar com você.
         </p>
       </div>
-      <form id="contact-form" class="space-y-4">
+      <form
+        id="contact-form"
+        class="space-y-4 opacity-0 translate-x-[50px] transition-all duration-1000 ease-out"
+        data-scroll-animate
+      >
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <input
             type="text"
             name="user_name"
             placeholder="Nome"
-            class="w-full border border-gray-400 rounded-full p-3 text-sm md:text-base focus:outline-none focus:ring-2 focus:ring-[var(--accent-color)]"
+            class="w-full border border-gray-400 rounded-full p-3 text-sm md:text-base focus:outline-none focus:ring-2 focus:ring-[var(--accent-color)] transition-all duration-300 focus:scale-105 opacity-0 translate-y-8 transition-all duration-700 ease-out delay-200"
+            data-scroll-animate
             required
           />
           <input
             type="text"
             name="user_lastname"
             placeholder="Sobrenome"
-            class="w-full border border-gray-400 rounded-full p-3 text-sm md:text-base focus:outline-none focus:ring-2 focus:ring-[var(--accent-color)]"
+            class="w-full border border-gray-400 rounded-full p-3 text-sm md:text-base focus:outline-none focus:ring-2 focus:ring-[var(--accent-color)] transition-all duration-300 focus:scale-105 opacity-0 translate-y-8 transition-all duration-700 ease-out delay-300"
+            data-scroll-animate
           />
         </div>
         <input
           type="email"
           name="user_email"
           placeholder="E-mail"
-          class="w-full border border-gray-400 rounded-full p-3 text-sm md:text-base focus:outline-none focus:ring-2 focus:ring-[var(--accent-color)]"
+          class="w-full border border-gray-400 rounded-full p-3 text-sm md:text-base focus:outline-none focus:ring-2 focus:ring-[var(--accent-color)] transition-all duration-300 focus:scale-105 opacity-0 translate-y-8 transition-all duration-700 ease-out delay-400"
+          data-scroll-animate
           required
         />
         <textarea
           name="message"
           placeholder="Mensagem"
           rows="4"
-          class="w-full border border-gray-400 rounded-md p-3 text-sm md:text-base focus:outline-none focus:ring-2 focus:ring-[var(--accent-color)]"
+          class="w-full border border-gray-400 rounded-md p-3 text-sm md:text-base focus:outline-none focus:ring-2 focus:ring-[var(--accent-color)] transition-all duration-300 focus:scale-105 opacity-0 translate-y-8 transition-all duration-700 ease-out delay-500"
+          data-scroll-animate
           required
         ></textarea>
         <p id="contact-message" class="text-sm text-center"></p>
         <button
           type="submit"
           id="contact-button"
-          class="w-full md:w-auto bg-[var(--text-color)] text-white px-6 py-3 rounded-full hover:bg-gray-800 transition text-sm md:text-base"
+          class="w-full md:w-auto bg-[var(--text-color)] text-white px-6 py-3 rounded-full hover:bg-gray-800 transition-all duration-500 text-sm md:text-base hover:-translate-y-1 hover:shadow-lg opacity-0 scale-95 transition-all duration-700 ease-out delay-600"
+          data-scroll-animate
         >
           Enviar
         </button>
       </form>
     </section>
 
-    <!-- EmailJS script para envio de e-mail no contato -->
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <script>
-      // Menu Mobile Toggle
-      document.addEventListener("DOMContentLoaded", () => {
-        // Scrollbar enhancement
-        let scrollTimeout;
-        const body = document.body;
-        
-        // Add subtle scroll indication
-        window.addEventListener('scroll', () => {
-          body.style.setProperty('--scroll-progress', 
-            (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100 + '%'
-          );
-          
-          // Clear existing timeout
-          clearTimeout(scrollTimeout);
-          
-          // Add scrolling class for enhanced visibility
-          body.classList.add('scrolling');
-          
-          // Remove scrolling class after scroll ends
-          scrollTimeout = setTimeout(() => {
-            body.classList.remove('scrolling');
-          }, 150);
-        });
-
-        const mobileMenuBtn = document.getElementById("mobile-menu-btn");
-        const mobileMenu = document.getElementById("mobile-menu");
-        const menuSpans = mobileMenuBtn.querySelectorAll("span");
-        
-        mobileMenuBtn.addEventListener("click", () => {
-          mobileMenu.classList.toggle("hidden");
-          
-          // Animação do hamburger
-          if (!mobileMenu.classList.contains("hidden")) {
-            menuSpans[0].style.transform = "rotate(45deg) translate(5px, 5px)";
-            menuSpans[1].style.opacity = "0";
-            menuSpans[2].style.transform = "rotate(-45deg) translate(7px, -6px)";
-          } else {
-            menuSpans[0].style.transform = "";
-            menuSpans[1].style.opacity = "";
-            menuSpans[2].style.transform = "";
-          }
-        });
-        
-        // Fechar menu ao clicar em um link
-        const mobileMenuLinks = mobileMenu.querySelectorAll("a");
-        mobileMenuLinks.forEach(link => {
-          link.addEventListener("click", () => {
-            mobileMenu.classList.add("hidden");
-            menuSpans[0].style.transform = "";
-            menuSpans[1].style.opacity = "";
-            menuSpans[2].style.transform = "";
-          });
-        });
-      });
-
-      // EmailJS: não precisa de init, só passar a public key no sendForm
-      document.addEventListener("DOMContentLoaded", () => {
-        const contactForm = document.getElementById("contact-form"),
-          contactMessage = document.getElementById("contact-message");
-
-        const sendEmail = async (e) => {
-          const contactButton = document.getElementById("contact-button");
-          const buttonDefaultMessage = contactButton.textContent;
-
-          contactButton.textContent = "Enviando...";
-          contactButton.classList.add("btn__disabled");
-
-          e.preventDefault();
-
-          await emailjs
-            .sendForm(
-              "service_v7bmcjp", // substitua pelo seu Service ID
-              "template_h4kuwkr", // substitua pelo seu Template ID
-              "#contact-form",
-              "xWjQLio2Pr8uXr53g" // substitua pela sua Public Key
-            )
-            .then(
-              () => {
-                contactMessage.textContent = "Mensagem enviada com sucesso!";
-                contactForm.reset();
-              },
-              (err) => {
-                console.error("Erro ao enviar e-mail:", err);
-                contactMessage.textContent =
-                  "Oops, algo deu errado. Tente novamente.";
-              }
-            );
-
-          contactButton.classList.remove("btn__disabled");
-          contactButton.textContent = buttonDefaultMessage;
-
-          setTimeout(() => {
-            contactMessage.textContent = "";
-          }, 5000);
-        };
-        contactForm.addEventListener("submit", sendEmail);
-      });
-    </script>
-
     <!-- Footer -->
     <footer
-      class="bg-[var(--text-color)] text-gray-300 text-center py-4 md:py-6 text-xs md:text-sm px-4"
+      class="bg-[var(--text-color)] text-gray-300 text-center py-4 md:py-6 text-xs md:text-sm px-4 opacity-0 translate-y-8 transition-all duration-700 ease-out"
+      data-scroll-animate
     >
-      <p>
+      <p
+        class="opacity-0 translate-y-8 transition-all duration-700 ease-out delay-200"
+        data-scroll-animate
+      >
         &copy; <span id="ano-atual"></span> Castro & Silva Advocacia — Todos os
         direitos reservados.<br />
         Desenvolvido por
@@ -607,55 +439,15 @@
             href="https://vitorverissimo00.github.io/personal-portfolio/"
             target="_blank"
             rel="noopener"
-            class="underline text-gray-200 hover:text-white"
+            class="underline text-gray-200 hover:text-white transition-colors duration-300"
             >Vítor Azevedo</a
           >.</b
         >
       </p>
-      <script>
-        document.getElementById("ano-atual").textContent =
-          new Date().getFullYear();
-      </script>
     </footer>
-    <style id="force-roboto" type="text/css">
-      /* Apply to most common elements and utilities, avoid SVG text */
-      html,
-      body,
-      .font-sans,
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6,
-      p,
-      a,
-      span,
-      div,
-      input,
-      textarea,
-      select,
-      button,
-      label {
-        font-family: "Roboto", system-ui, -apple-system, "Segoe UI",
-          "Helvetica Neue", Arial, sans-serif !important;
-      }
-    </style>
 
-    <script>
-      // Simple check to help debugging in the browser console whether Roboto is available
-      if (document.fonts && document.fonts.check) {
-        console.log(
-          "Roboto 400 available:",
-          document.fonts.check("1rem Roboto")
-        );
-        console.log(
-          "Roboto 700 available:",
-          document.fonts.check("700 1rem Roboto")
-        );
-      } else {
-        console.log("Font API not available; verify Roboto via Network tab.");
-      }
-    </script>
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="assets/js/main.js"></script>
   </body>
 </html>

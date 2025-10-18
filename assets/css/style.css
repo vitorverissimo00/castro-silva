@@ -1,0 +1,202 @@
+/* Castro & Silva Advocacia - Custom Styles */
+
+/* CSS Variables */
+:root {
+  --bg-color: #e4e2dc;
+  --text-color: #111;
+  --green-color: #355934;
+  --accent-color: #a88036;
+  --white-hsl: 0, 0%, 100%;
+  --black-hsl: 0, 0%, 0%;
+  --safeLightAccent-hsl: 143.04, 66.14%, 37.06%;
+  --safeDarkAccent-hsl: 143.04, 66.14%, 37.06%;
+  --safeInverseAccent-hsl: 0, 0%, 100%;
+  --safeInverseLightAccent-hsl: 0, 0%, 100%;
+  --safeInverseDarkAccent-hsl: 0, 0%, 100%;
+  --accent-hsl: 143.04, 66.14%, 37.06%;
+  --lightAccent-hsl: 45, 11.76%, 86.67%;
+  --darkAccent-hsl: 111.43, 11.11%, 12.35%;
+  --siteBackgroundColor: hsla(var(--lightAccent-hsl), 1);
+}
+
+/* Base Styles */
+html,
+body {
+  background-color: var(--siteBackgroundColor);
+  color: var(--text-color);
+  font-family: "Roboto", system-ui, -apple-system, "Segoe UI", "Helvetica Neue",
+    Arial, sans-serif !important;
+}
+.font-sans {
+  font-family: "Roboto", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+}
+
+input,
+textarea,
+select,
+button {
+  font-family: inherit;
+}
+
+/* Custom Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--siteBackgroundColor);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--accent-color), #005a31);
+  border-radius: 10px;
+  border: 2px solid var(--siteBackgroundColor);
+  transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #005a31, var(--accent-color));
+  transform: scale(1.1);
+  box-shadow: 0 2px 8px rgba(0, 115, 62, 0.3);
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--siteBackgroundColor);
+}
+
+/* Firefox Scrollbar */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-color) var(--siteBackgroundColor);
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar for specific containers */
+.custom-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-color) transparent;
+}
+
+.custom-scroll::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.custom-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+  background: var(--accent-color);
+  border-radius: 4px;
+  opacity: 0.7;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb:hover {
+  opacity: 1;
+  background: #005a31;
+}
+
+/* Scrollbar animation on page load */
+@keyframes scrollbarFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+::-webkit-scrollbar-thumb {
+  animation: scrollbarFadeIn 0.5s ease-in-out;
+}
+
+/* Scrollbar visibility on scroll */
+body {
+  transition: all 0.3s ease;
+}
+
+body::-webkit-scrollbar-thumb {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Enhanced scrollbar during scroll */
+body.scrolling::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--accent-color), #004a29);
+  box-shadow: 0 2px 12px rgba(0, 115, 62, 0.4);
+  transform: scaleX(1.1);
+}
+
+/* Scroll progress indicator */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--scroll-progress, 0%);
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-color), #66bb6a);
+  z-index: 9999;
+  transition: width 0.1s ease-out;
+  opacity: 0;
+  pointer-events: none;
+}
+
+body.scrolling::before {
+  opacity: 1;
+}
+
+/* Text formatting */
+.castro-silva-text {
+  line-height: 1.8;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border: 1px solid var(--siteBackgroundColor);
+  }
+
+  button,
+  a {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  input,
+  textarea,
+  select {
+    font-size: 16px;
+  }
+}
+
+/* Force Roboto Font */
+html,
+body,
+.font-sans,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+span,
+div,
+input,
+textarea,
+select,
+button,
+label {
+  font-family: "Roboto", system-ui, -apple-system, "Segoe UI", "Helvetica Neue",
+    Arial, sans-serif !important;
+}
