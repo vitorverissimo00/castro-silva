@@ -1,24 +1,38 @@
 // Castro & Silva Advocacia - JavaScript Functions
-
-// Initialize Navbar Scroll Effect
 function initNavbarScroll() {
   const navbar = document.getElementById("navbar");
-  let lastScrollY = window.scrollY;
+  if (!navbar) {
+    return;
+  }
 
-  function updateNavbar() {
-    const currentScrollY = window.scrollY;
+  function handleScroll() {
+    const scrollY = window.scrollY || window.pageYOffset;
+    const documentElement = document.documentElement;
 
-    if (currentScrollY > 100) {
+    const currentScroll = Math.max(
+      scrollY,
+      documentElement.scrollTop,
+      document.body.scrollTop
+    );
+
+    if (currentScroll > 400) {
       navbar.classList.add("scrolled");
     } else {
       navbar.classList.remove("scrolled");
     }
-
-    lastScrollY = currentScrollY;
   }
 
-  window.addEventListener("scroll", updateNavbar);
-  updateNavbar(); // Call once to set initial state
+  // Adiciona múltiplos listeners para garantir
+  window.addEventListener("scroll", handleScroll, { passive: true });
+  window.addEventListener("wheel", handleScroll, { passive: true });
+  document.addEventListener("scroll", handleScroll, { passive: true });
+
+  // Também escuta resize e load
+  window.addEventListener("resize", handleScroll);
+  window.addEventListener("load", handleScroll);
+
+  // Trigger inicial
+  setTimeout(handleScroll, 100);
 }
 
 // Initialize EmailJS
