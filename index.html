@@ -99,7 +99,7 @@
     <!-- Hero -->
     <section
       class="min-h-screen relative flex flex-col justify-center items-center text-center bg-cover bg-center"
-      style="background-image: url('src/images/background-5.webp')"
+      style="background-image: url('assets/images/background-5.webp')"
     >
       <div
         class="absolute inset-0 bg-black/50 flex flex-col justify-center items-center px-6 py-20"
@@ -114,24 +114,28 @@
     </section>
 
     <!-- Empresa (sobre a empresa) -->
-    <section id="empresa" class="bg-white w-full">
+    <section id="empresa" class="w-full px-6 md:px-20">
       <div class="h-screen grid grid-cols-1 md:grid-cols-2">
-        <!-- Imagem da empresa à esquerda, ocupando toda a altura -->
-        <div class="h-screen w-full">
-          <img src="src/images/background-3.webp" alt="Empresa" class="w-full h-full object-cover" />
+        <div class="h-screen w-full flex justify-center items-center">
+          <img
+            src="assets/images/company-logo.png"
+            alt="Empresa"
+            class="max-w-6xl w-full h-auto object-contain"
+          />
         </div>
 
-        <!-- Texto da empresa à direita -->
         <div class="h-screen flex items-center">
           <div class="max-w-3xl p-8 md:p-20">
-            <h2 class="text-3xl md:text-4xl font-semibold text-gray-900 mb-4">Sobre a Empresa</h2>
+            <h2 class="text-3xl md:text-4xl font-semibold text-gray-900 mb-4">
+              Sobre a Empresa
+            </h2>
             <p class="text-gray-700 leading-relaxed mb-4">
               A Castro & Silva é uma firma comprometida com excelência jurídica,
               ética profissional e atendimento personalizado aos seus clientes.
             </p>
             <p class="text-gray-700 leading-relaxed mb-4">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius odit
-              quasi distinctio optio fugiat nam fuga porro laudantium quia
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius
+              odit quasi distinctio optio fugiat nam fuga porro laudantium quia
               ducimus, rerum illo quidem excepturi suscipit modi iure!
               Consequatur, perspiciatis eos!
             </p>
@@ -148,14 +152,6 @@
 
     <section id="sobre" class="w-full">
       <div class="h-screen grid grid-cols-1 md:grid-cols-2 bg-white">
-        <div class="h-screen w-full">
-          <img
-            src="src/images/igor-castro.jpg"
-            alt="Castro"
-            class="w-full h-full object-cover"
-          />
-        </div>
-
         <div class="h-screen flex items-center">
           <div class="max-w-3xl p-8 md:p-20">
             <h2 class="text-4xl md:text-5xl font-bold mb-6">Castro</h2>
@@ -173,9 +169,24 @@
             </p>
           </div>
         </div>
+
+        <div class="h-screen w-full">
+          <img
+            src="assets/images/igor-castro.jpg"
+            alt="Castro"
+            class="w-full h-full object-cover"
+          />
+        </div>
       </div>
 
       <div class="h-screen grid grid-cols-1 md:grid-cols-2">
+        <div class="h-screen w-full">
+          <img
+            src="assets/images/silva.jpg"
+            alt="Silva"
+            class="w-full h-full object-cover"
+          />
+        </div>
         <div class="h-screen flex items-center">
           <div class="max-w-3xl p-8 md:p-20 text-left">
             <h2 class="text-4xl md:text-5xl font-bold mb-6">Silva</h2>
@@ -194,14 +205,6 @@
             </p>
           </div>
         </div>
-
-        <div class="h-screen w-full">
-          <img
-            src="src/images/silva.jpg"
-            alt="Silva"
-            class="w-full h-full object-cover"
-          />
-        </div>
       </div>
     </section>
 
@@ -216,7 +219,7 @@
             class="p-6 border rounded-lg hover:shadow-lg transition flex flex-col"
           >
             <img
-              src="src/images/background-2.webp"
+              src="assets/images/background-9.jpg"
               alt="Direito Cível"
               class="w-full h-72 object-cover rounded-md mb-4"
             />
@@ -232,7 +235,7 @@
             class="p-6 border rounded-lg hover:shadow-lg transition flex flex-col"
           >
             <img
-              src="src/images/background-7.jpg"
+              src="assets/images/background-7.jpg"
               alt="Direito Empresarial"
               class="w-full h-72 object-cover rounded-md mb-4"
             />
@@ -248,7 +251,7 @@
             class="p-6 border rounded-lg hover:shadow-lg transition flex flex-col"
           >
             <img
-              src="src/images/background-4.webp"
+              src="assets/images/background-8.jpg"
               alt="Direito Trabalhista"
               class="w-full h-72 object-cover rounded-md mb-4"
             />
@@ -276,31 +279,40 @@
           contato em breve. Será um prazer falar com você.
         </p>
       </div>
-      <form class="space-y-4">
+      <form id="contact-form" class="space-y-4">
         <div class="grid md:grid-cols-2 gap-4">
           <input
             type="text"
+            name="user_name"
             placeholder="Nome"
             class="w-full border border-gray-400 rounded-full p-3 focus:outline-none focus:ring-2 focus:ring-[var(--accent-color)]"
+            required
           />
           <input
             type="text"
+            name="user_lastname"
             placeholder="Sobrenome"
             class="w-full border border-gray-400 rounded-full p-3 focus:outline-none focus:ring-2 focus:ring-[var(--accent-color)]"
           />
         </div>
         <input
           type="email"
+          name="user_email"
           placeholder="E-mail"
           class="w-full border border-gray-400 rounded-full p-3 focus:outline-none focus:ring-2 focus:ring-[var(--accent-color)]"
+          required
         />
         <textarea
+          name="message"
           placeholder="Mensagem"
           rows="4"
           class="w-full border border-gray-400 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-[var(--accent-color)]"
+          required
         ></textarea>
+        <p id="contact-message" class="text-sm text-center"></p>
         <button
           type="submit"
+          id="contact-button"
           class="bg-[var(--text-color)] text-white px-6 py-3 rounded-full hover:bg-gray-800 transition"
         >
           Enviar
@@ -308,15 +320,76 @@
       </form>
     </section>
 
+    <!-- EmailJS script para envio de e-mail no contato -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+      // EmailJS: não precisa de init, só passar a public key no sendForm
+      document.addEventListener("DOMContentLoaded", () => {
+        const contactForm = document.getElementById("contact-form"),
+          contactMessage = document.getElementById("contact-message");
+
+        const sendEmail = async (e) => {
+          const contactButton = document.getElementById("contact-button");
+          const buttonDefaultMessage = contactButton.textContent;
+
+          contactButton.textContent = "Enviando...";
+          contactButton.classList.add("btn__disabled");
+
+          e.preventDefault();
+
+          await emailjs
+            .sendForm(
+              "service_v7bmcjp", // substitua pelo seu Service ID
+              "template_h4kuwkr", // substitua pelo seu Template ID
+              "#contact-form",
+              "xWjQLio2Pr8uXr53g" // substitua pela sua Public Key
+            )
+            .then(
+              () => {
+                contactMessage.textContent = "Mensagem enviada com sucesso!";
+                contactForm.reset();
+              },
+              (err) => {
+                console.error("Erro ao enviar e-mail:", err);
+                contactMessage.textContent =
+                  "Oops, algo deu errado. Tente novamente.";
+              }
+            );
+
+          contactButton.classList.remove("btn__disabled");
+          contactButton.textContent = buttonDefaultMessage;
+
+          setTimeout(() => {
+            contactMessage.textContent = "";
+          }, 5000);
+        };
+        contactForm.addEventListener("submit", sendEmail);
+      });
+    </script>
+
     <!-- Footer -->
     <footer
       class="bg-[var(--text-color)] text-gray-300 text-center py-6 text-sm"
     >
       <p>
-        &copy; 2025 Castro & Silva Advocacia — Todos os direitos reservados.
+        &copy; <span id="ano-atual"></span> Castro & Silva Advocacia — Todos os
+        direitos reservados.<br />
+        Desenvolvido por
+        <b
+          ><a
+            href="https://vitorverissimo00.github.io/personal-portfolio/"
+            target="_blank"
+            rel="noopener"
+            class="underline text-gray-200 hover:text-white"
+            >Vítor Azevedo</a
+          >.</b
+        >
       </p>
+      <script>
+        document.getElementById("ano-atual").textContent =
+          new Date().getFullYear();
+      </script>
     </footer>
-    <!-- Forçar Roboto com alta especificidade para cobrir possíveis sobrescritas por CSS externos -->
     <style id="force-roboto" type="text/css">
       /* Apply to most common elements and utilities, avoid SVG text */
       html,
