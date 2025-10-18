@@ -110,7 +110,6 @@ function initScrollAnimations() {
     });
   }, observerOptions);
 
-  // Observe all elements with data-scroll-animate attribute
   const animatedElements = document.querySelectorAll("[data-scroll-animate]");
   animatedElements.forEach((element) => {
     observer.observe(element);

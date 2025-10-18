@@ -26,11 +26,19 @@ body {
   color: var(--text-color);
   font-family: "Roboto", system-ui, -apple-system, "Segoe UI", "Helvetica Neue",
     Arial, sans-serif !important;
+  max-width: 100vw;
+  max-height: 100vh ;
+  overflow-x: hidden !important;
+}
+
+section {
+  overflow-y: hidden !important;
 }
 
 /* Hero Title Float Animation */
 @keyframes float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0px);
   }
   50% {
@@ -260,4 +268,8 @@ button,
 label {
   font-family: "Roboto", system-ui, -apple-system, "Segoe UI", "Helvetica Neue",
     Arial, sans-serif !important;
+}
+
+.data-scroll-animate {
+  overflow-x: hidden;
 }
