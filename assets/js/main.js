@@ -17,7 +17,7 @@ function initNavbarScroll() {
       document.body.scrollTop
     );
 
-    if (currentScroll > 400) {
+    if (currentScroll > 50) {
       navbar.classList.add("scrolled");
       logo.src = "assets/images/company-logo-cropped.png";
     } else {
@@ -28,6 +28,7 @@ function initNavbarScroll() {
 
   // Adiciona múltiplos listeners para garantir
   window.addEventListener("scroll", handleScroll, { passive: true });
+  window.addEventListener("navigation", handleScroll, { passive: true });
   window.addEventListener("wheel", handleScroll, { passive: true });
   document.addEventListener("scroll", handleScroll, { passive: true });
 
@@ -187,6 +188,58 @@ function setCurrentYear() {
   }
 }
 
+// Initialize navigation to hero section
+function initHeroNavigation() {
+  function handleHeroNavigation() {
+    if (window.location.hash === "#hero") {
+      console.log("Navegando para #hero - executando initNavbarScroll");
+      initNavbarScroll();
+    }
+  }
+
+  window.addEventListener("hashchange", handleHeroNavigation);
+
+  document.addEventListener("click", function (e) {
+    const link = e.target.closest('a[href="#hero"]');
+    if (link) {
+      setTimeout(() => {
+        initNavbarScroll();
+      }, 100);
+    }
+  });
+
+  if (window.location.hash === "#hero") {
+    handleHeroNavigation();
+  }
+}
+
+function handleActiveSection() {
+  const sections = document.querySelectorAll("section");
+  const navLinks = document.querySelectorAll(".nav__link");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          navLinks.forEach((link) => link.classList.remove("active-link"));
+
+          document
+            .querySelectorAll(`a[href="#${entry.target.id}"]`)
+            .forEach((activeLink) => {
+              activeLink.classList.add("active-link");
+            });
+        }
+      });
+    },
+    {
+      threshold: 0.3,
+      rootMargin: "-80px 0px 0px 0px",
+    }
+  );
+
+  sections.forEach((section) => observer.observe(section));
+}
+
 // Initialize all functions when DOM is loaded
 document.addEventListener("DOMContentLoaded", function () {
   initHeroAnimation();
@@ -196,4 +249,6 @@ document.addEventListener("DOMContentLoaded", function () {
   initScrollAnimations();
   initContactForm();
   setCurrentYear();
+  initHeroNavigation();
+  handleActiveSection();
 });

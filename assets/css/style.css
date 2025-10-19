@@ -27,7 +27,7 @@ body {
   font-family: "Roboto", system-ui, -apple-system, "Segoe UI", "Helvetica Neue",
     Arial, sans-serif !important;
   max-width: 100vw;
-  max-height: 100vh ;
+  max-height: 100vh;
   overflow-x: hidden !important;
 }
 
@@ -247,29 +247,14 @@ body.scrolling::before {
   }
 }
 
-/* Force Roboto Font */
-html,
-body,
-.font-sans,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-a,
-span,
-div,
-input,
-textarea,
-select,
-button,
-label {
-  font-family: "Roboto", system-ui, -apple-system, "Segoe UI", "Helvetica Neue",
-    Arial, sans-serif !important;
-}
-
 .data-scroll-animate {
   overflow-x: hidden;
+}
+
+.active-link {
+  color: var(--accent-color) !important;
+}
+
+.hero-title {
+  font-family: "Playfair Display", serif !important;
 }
