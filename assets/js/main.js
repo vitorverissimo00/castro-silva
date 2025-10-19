@@ -1,7 +1,9 @@
 // Castro & Silva Advocacia - JavaScript Functions
 function initNavbarScroll() {
   const navbar = document.getElementById("navbar");
-  if (!navbar) {
+  const logo = document.getElementById("nav-logo");
+
+  if (!navbar || !logo) {
     return;
   }
 
@@ -17,8 +19,10 @@ function initNavbarScroll() {
 
     if (currentScroll > 400) {
       navbar.classList.add("scrolled");
+      logo.src = "assets/images/company-logo-cropped.png";
     } else {
       navbar.classList.remove("scrolled");
+      logo.src = "assets/images/company-logo-cropped-white.png";
     }
   }
 

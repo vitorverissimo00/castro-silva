@@ -29,12 +29,19 @@
       <nav
         class="max-w-full h-16 md:h-24 mx-auto flex justify-between items-center px-4 md:px-6 py-4"
       >
-        <h1
+        <img
+          id="nav-logo"
+          src="assets/images/company-logo-cropped-white.png"
+          alt="Logo Castro & Silva"
+          class="nav-logo h-10 md:h-14 object-contain opacity-0 translate-x-[-30px] transition-all duration-700 ease-out delay-200"
+          data-scroll-animate
+        />
+        <!-- <h1
           class="text-lg md:text-2xl font-semibold text-white opacity-0 translate-x-[-30px] transition-all duration-700 ease-out delay-200"
           data-scroll-animate
         >
           Castro & Silva
-        </h1>
+        </h1> -->
 
         <!-- Menu Desktop -->
         <ul
@@ -70,15 +77,9 @@
           class="md:hidden flex flex-col space-y-1 p-2 opacity-0 translate-x-[30px] transition-all duration-700 ease-out delay-600"
           data-scroll-animate
         >
-          <span
-            class="w-6 h-0.5 bg-white transition-all duration-300"
-          ></span>
-          <span
-            class="w-6 h-0.5 bg-white transition-all duration-300"
-          ></span>
-          <span
-            class="w-6 h-0.5 bg-white transition-all duration-300"
-          ></span>
+          <span class="w-6 h-0.5 bg-white transition-all duration-300"></span>
+          <span class="w-6 h-0.5 bg-white transition-all duration-300"></span>
+          <span class="w-6 h-0.5 bg-white transition-all duration-300"></span>
         </button>
       </nav>
 
@@ -123,7 +124,7 @@
         class="absolute inset-0 bg-black/50 flex flex-col justify-center items-center px-4 md:px-6 py-20"
       >
         <h1
-          class="text-4xl sm:text-5xl md:text-6xl lg:text-8xl xl:text-9xl text-white mb-4 leading-tight opacity-0 translate-y-12 scale-95 transition-all duration-1200 ease-out delay-800"
+          class="text-4xl sm:text-5xl md:text-6xl lg:text-8xl xl:text-9xl mb-4 leading-tight opacity-0 translate-y-12 scale-95 transition-all duration-1200 ease-out delay-800"
           style="color: hsl(var(--lightAccent-hsl))"
           data-scroll-animate
         >
@@ -425,13 +426,9 @@
 
     <!-- Footer -->
     <footer
-      class="bg-[var(--text-color)] text-gray-300 text-center py-4 md:py-6 text-xs md:text-sm px-4 opacity-0 translate-y-8 transition-all duration-700 ease-out"
-      data-scroll-animate
+      class="bg-[var(--text-color)] text-gray-300 text-center py-4 md:py-6 text-xs md:text-sm px-4"
     >
-      <p
-        class="opacity-0 translate-y-8 transition-all duration-700 ease-out delay-200"
-        data-scroll-animate
-      >
+      <p>
         &copy; <span id="ano-atual"></span> Castro & Silva Advocacia — Todos os
         direitos reservados.<br />
         Desenvolvido por
