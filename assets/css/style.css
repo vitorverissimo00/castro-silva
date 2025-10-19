@@ -1,3 +1,14 @@
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: light;
+    background: #fff;
+    color: #000;
+  }
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+}
 /* Castro & Silva Advocacia - Custom Styles */
 
 /* CSS Variables */
