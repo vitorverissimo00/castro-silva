@@ -75,6 +75,7 @@
           <li>
             <a
               href="#hero"
+              onclick="initNavbarScroll('#hero')"
               class="nav__link hover:text-[var(--accent-color)] transition-colors duration-300 active-link"
               >Início</a
             >
@@ -82,6 +83,7 @@
           <li>
             <a
               href="#empresa"
+              onclick="initNavbarScroll('#empresa')"
               class="nav__link hover:text-[var(--accent-color)] transition-colors duration-300"
               >Nossa empresa</a
             >
@@ -89,6 +91,7 @@
           <li>
             <a
               href="#sobre"
+              onclick="initNavbarScroll('#sobre')"
               class="nav__link hover:text-[var(--accent-color)] transition-colors duration-300"
               >Quem somos</a
             >
@@ -96,6 +99,7 @@
           <li>
             <a
               href="#servicos"
+              onclick="initNavbarScroll('#servicos')"
               class="nav__link hover:text-[var(--accent-color)] transition-colors duration-300"
               >Serviços</a
             >
@@ -103,6 +107,7 @@
           <li>
             <a
               href="#contato"
+              onclick="initNavbarScroll('#contato')"
               class="nav__link hover:text-[var(--accent-color)] transition-colors duration-300"
               >Contato</a
             >
@@ -364,11 +369,18 @@
         <div
           class="min-h-[50vh] lg:h-screen w-full order-1 lg:order-2 opacity-0 translate-x-[50px] transition-all duration-1000 ease-out"
           data-scroll-animate
+          style="
+            display: flex;
+            align-self: flex-start;
+            justify-content: center;
+            align-items: center;
+          "
         >
           <img
             src="assets/images/igor-castro.jpg"
             alt="Castro"
-            class="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+            class="object-cover transition-transform duration-300 hover:scale-105"
+            style="width: 80%; height: 80%"
           />
         </div>
       </div>
@@ -377,11 +389,18 @@
         <div
           class="min-h-[50vh] lg:h-screen w-full opacity-0 translate-x-[-50px] transition-all duration-1000 ease-out"
           data-scroll-animate
+          style="
+            display: flex;
+            align-self: flex-end;
+            justify-content: flex-end;
+            align-items: end;
+          "
         >
           <img
             src="assets/images/silva.jpg"
             alt="Silva"
-            class="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+            class="object-cover transition-transform duration-300 hover:scale-105"
+            style="width: 80%; height: 80%"
           />
         </div>
         <div
@@ -551,9 +570,9 @@
         </p>
 
         <!-- Google Maps -->
-        <!-- <div class="mt-10 w-full mb-8">
+        <div class="mt-10 w-full mb-8">
           <iframe
-            src="https://www.google.com/maps?q=Av.+Getúlio+Vargas,+Centro,+Maringá+-+PR&output=embed"
+            src="https://www.google.com/maps?q=Rua+Marciano+Halchuk+55,+Vila+Bosque,+Maringá+-+PR,+87005-080&output=embed"
             width="100%"
             height="350"
             style="border: 0; border-radius: 1rem"
@@ -562,7 +581,7 @@
             referrerpolicy="no-referrer-when-downgrade"
             title="Localização Castro & Silva Advocacia"
           ></iframe>
-        </div> -->
+        </div>
 
         <!-- Botão WhatsApp -->
         <div
@@ -597,6 +616,7 @@
         id="contact-form"
         class="space-y-4 opacity-0 translate-x-[50px] transition-all duration-1000 ease-out"
         data-scroll-animate
+        style="display: flex; flex-direction: column; justify-content: center;"
       >
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <input
